@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Validação de Diploma | MEC</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #003f8f, #1e7f43);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 520px;
+    border-radius: 16px;
+    box-shadow: 0 25px 45px rgba(0,0,0,0.25);
+    overflow: hidden;
+    animation: fade 0.5s ease;
+}
+
+@keyframes fade {
+    from {opacity:0; transform: translateY(20px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+.header {
+    background: linear-gradient(90deg, #1e7f43, #ffcc00);
+    padding: 22px;
+    text-align: center;
+    font-weight: bold;
+    color: #003f8f;
+}
+
+.header span {
+    display: block;
+    font-size: 13px;
+}
+
+.content {
+    padding: 35px;
+    text-align: center;
+}
+
+h1 {
+    color: #003f8f;
+    margin-bottom: 12px;
+}
+
+p {
+    color: #555;
+    font-size: 15px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    margin-bottom: 18px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #1e7f43;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: #1e7f43;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #145c30;
+}
+
+.footer {
+    background: #f2f2f2;
+    text-align: center;
+    padding: 15px;
+    font-size: 12px;
+    color: #666;
+}
+
+.badge {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 14px;
+    background: #003f8f;
+    color: white;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.diploma {
+    text-align: left;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.7;
+}
+
+.diploma strong {
+    color: #003f8f;
+}
+
+hr {
+    margin: 20px 0;
+    border: none;
+    height: 1px;
+    background: #ddd;
+}
+</style>
+</head>
+<body>
+
+<!-- PÁGINA 1 -->
+<div class="card" id="pagina-validacao">
+    <div class="header">
+        Sistema de Validação de Diplomas
+        <span> Diplomas Validados Pelo Ministério da Educação</span>
+    </div>
+
+    <div class="content">
+        <h1>Confirme Seu Diploma</h1>
+        <p>Informe o código de validação para consultar a autenticidade do diploma.</p>
+
+        <input type="text" id="codigo" placeholder="Código de validação">
+        <button onclick="validar()">VALIDAR DOCUMENTO</button>
+
+        <div class="badge">Consulta Pública</div>
+    </div>
+
+    <div class="footer">
+        © 2026 • Ministério da Educação • Governo Federal
+    </div>
+</div>
+
+<!-- PÁGINA 2 -->
+<div class="card" id="pagina-diploma" style="display:none;">
+    <div class="header">
+        Diploma Validado
+        <span>Registro Nacional</span>
+    </div>
+
+    <div class="content diploma">
+        <p>
+            A Representante Legal da Mantenedora da
+            <strong>Universidade Pitágoras Unopar Anhanguera</strong>,
+            no uso de suas atribuições legais e tendo em vista a conclusão do curso
+            <strong>Superior de Tecnologia em Logística</strong>
+            em <strong>16/12/2022</strong> e colação de grau em
+            <strong>26/03/2023</strong>, confere o título de
+        </p>
+
+        <hr>
+
+        <p style="text-align:center; font-size:18px;">
+            <strong>Tecnólogo em Gestão de Recursos Humanos</strong>
+        </p>
+
+        <p style="text-align:center; margin-top:10px;">
+            a
+        </p>
+
+        <p style="text-align:center; font-size:18px;">
+            <strong>Pytágoras Augusto de Souza Silva</strong>
+        </p>
+
+        <hr>
+
+        <p><strong>Código de Validação:</strong><br>771.675.8f4lcbec3cb8</p>
+
+        <div class="badge">Diploma Autêntico</div>
+    </div>
+
+    <div class="footer">
+        Documento validado eletronicamente conforme legislação vigente
+    </div>
+</div>
+
+<script>
+function validar() {
+    const codigo = document.getElementById("codigo").value.trim();
+    const codigoValido = "771.675.8f4lcbec3cb8";
+
+    if (codigo === codigoValido) {
+        document.getElementById("pagina-validacao").style.display = "none";
+        document.getElementById("pagina-diploma").style.display = "block";
+    } else {
+        alert("❌ Código inválido ou não encontrado.");
+    }
+}
+</script>
+
+</body>
+</html>
